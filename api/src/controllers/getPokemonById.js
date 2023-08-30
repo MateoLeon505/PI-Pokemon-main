@@ -1,13 +1,16 @@
-// Esta función tiene habilitado interactuar con el modelo
-// Los métodos del modelo manejan promesas, por eso ponemos 'async'
+// Este módulo tiene la responsabilidad de traer un Pokemon por Id
 //-------------------------------------
-const { Pokemon, Type } = require('../db');
+// Importación de módulos
+const axios = require("axios");
+//---------------------
+const { Pokemon, Type } = require('../db'); // Trae los modelos
 //-------------------------------------
-const getPokemonById = async ( id ) => 
+const getPokemonById = async ( id, source ) => 
 {
-    // create es del modelo que devuelve promesa, por eso ponemos await
-    // await: espero que esa promesa se resuelva, y luego guardo la respuesta en newPokemon
-    return await Pokemon(id); 
+    const pokemon = 
+    source === "api" 
+    ? (await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`))
+    : await Pokemon.findByPK(id);
 }
 //-------------------------------------
-module.exports = {createPokemon};
+module.exports = { getPokemonById };

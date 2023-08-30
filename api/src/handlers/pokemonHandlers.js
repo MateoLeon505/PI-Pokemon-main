@@ -2,9 +2,10 @@
 //-------------------------------------
 // Importación de controllers
 const { createPokemon } = require("../controllers/createPokemon");
+const { getPokemonById } = require("../controllers/getPokemonById");
 //-------------------------------------
 // GET | Traer: TODOS los Pokemon o por nombre
-const getPokemons = (req, res) =>
+const getPokemonsHandler = (req, res) =>
 {
     const { name } = req.query;
     // GET | Traer: Pokemon por Nombre
@@ -21,20 +22,30 @@ const getPokemons = (req, res) =>
 }
 //-------------------------------------
 // GET | Traer: Pokemon por ID 
-const getPokemonById = (req, res) => 
+const getPokemonByIdHandler = async (req, res) => 
 {
-  const { idPokemon } = req.params;
-  res.status(200).send(`NIY: Traigo el Detalle del pokemon ${idPokemon}`);
+  const { id } = req.params;
+  const source = isNaN(id) ? "bdd" : "api";
+
+  try 
+  {
+    const poke =  await getPokemonById(id, source);
+    res.status(201).json("OK");
+  } 
+  catch (error) 
+  {
+    res.status(404).send({ error: error.message });
+  }
 }
 //-------------------------------------
 // GET | Traer: Pokemon por tipo
-const getPokemonByTypes = () =>
+const getPokemonTypeHandler = () =>
 {
   res.status(200).send("NIY: Traigo pokemon por tipo");
 }
 //-------------------------------------
 // POST | Crear: Pokemon 
-const postPokemon = async (req, res) =>
+const createPokemonHandler = async (req, res) =>
 { 
   try 
   {
@@ -44,13 +55,13 @@ const postPokemon = async (req, res) =>
   } 
   catch (error) 
   {
-    res.status(400).json({error: error.message});
+    res.status(404).json({error: error.message});
   }
 }
 //-------------------------------------
 module.exports = {
-    getPokemons,
-    getPokemonById,  
-    getPokemonByTypes, 
-    postPokemon
+    getPokemonsHandler,
+    getPokemonByIdHandler,  
+    getPokemonTypeHandler, 
+    createPokemonHandler
 };

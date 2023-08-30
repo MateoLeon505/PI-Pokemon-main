@@ -5,20 +5,20 @@ const pokemonsRouter = Router();
 //-------------------------------------
 // Importar todos Handlers
 const {
-    getPokemons,
-    getPokemonById,
-    getPokemonByTypes,
-    postPokemon 
+    getPokemonsHandler,
+    getPokemonByIdHandler,
+    getPokemonTypeHandler,
+    createPokemonHandler 
   } = require('../handlers/pokemonHandlers');
 //-------------------------------------
 // Definición de las rutas 
-pokemonsRouter.get("/pokemons", getPokemons);
+pokemonsRouter.get("/pokemons", getPokemonsHandler);
 
-pokemonsRouter.get("/pokemons/:idPokemon", getPokemonById);
+pokemonsRouter.get("/pokemons/:idPokemon", getPokemonByIdHandler);
 
-pokemonsRouter.get("/types", getPokemonByTypes);
+pokemonsRouter.get("/types", getPokemonTypeHandler);
 
-pokemonsRouter.post("/pokemons", postPokemon);
+pokemonsRouter.post("/pokemons", createPokemonHandler);
 //-------------------------------------
 // Exportación del enrutador
 module.exports = pokemonsRouter;
