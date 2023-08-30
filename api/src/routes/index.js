@@ -1,12 +1,24 @@
+// Este módulo tiene la responsabilidad de definir las rutas
+//----------------------------------------------
 const { Router } = require('express');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+const pokemonsRouter = Router();
+//-------------------------------------
+// Importar todos Handlers
+const {
+    getPokemons,
+    getPokemonById,
+    getPokemonByTypes,
+    postPokemon 
+  } = require('../handlers/pokemonHandlers');
+//-------------------------------------
+// Definición de las rutas 
+pokemonsRouter.get("/pokemons", getPokemons);
 
+pokemonsRouter.get("/pokemons/:idPokemon", getPokemonById);
 
-const router = Router();
+pokemonsRouter.get("/types", getPokemonByTypes);
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-
-
-module.exports = router;
+pokemonsRouter.post("/pokemons", postPokemon);
+//-------------------------------------
+// Exportación del enrutador
+module.exports = pokemonsRouter;
