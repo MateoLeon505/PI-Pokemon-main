@@ -4,7 +4,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 //--------------------------------------
 // Sincronizando todos las modelos a la vez
-conn.sync({ force: true }).then(() => 
+conn.sync({ alter: true }).then(() => 
 {
   server.listen(3001, () => 
   {

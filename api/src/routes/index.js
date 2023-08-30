@@ -14,7 +14,7 @@ const {
 // Definición de las rutas 
 pokemonsRouter.get("/pokemons", getPokemonsHandler);
 
-pokemonsRouter.get("/pokemons/:idPokemon", getPokemonByIdHandler);
+pokemonsRouter.get("/pokemons/:id", getPokemonByIdHandler);
 
 pokemonsRouter.get("/types", getPokemonTypeHandler);
 

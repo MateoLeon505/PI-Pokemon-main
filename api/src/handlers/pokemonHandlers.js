@@ -9,16 +9,10 @@ const getPokemonsHandler = (req, res) =>
 {
     const { name } = req.query;
     // GET | Traer: Pokemon por Nombre
-    if (name) 
-    {
-        const { name } = req.query;
-        res.status(200).send(`NIY: Traigo pokemon por el nombre ${name}`);
-    }
+    if (name) res.status(200).send(`NIY: Traigo pokemon por el nombre ${name}`);
+
     // GET | Traer: Todos los Pokemon 
-    else
-    {
-        res.status(200).send("NIY: Traigo TODOS los Pokemons");
-    }
+    else res.status(200).send("NIY: Traigo TODOS los Pokemons");
 }
 //-------------------------------------
 // GET | Traer: Pokemon por ID 
@@ -29,12 +23,12 @@ const getPokemonByIdHandler = async (req, res) =>
 
   try 
   {
-    const poke =  await getPokemonById(id, source);
-    res.status(201).json("OK");
+    const pokemon =  await getPokemonById(id, source);
+    res.status(201).json(pokemon);
   } 
   catch (error) 
   {
-    res.status(404).send({ error: error.message });
+    res.status(404).send({message:`Error al buscar con ese id: (${error.message})`});
   }
 }
 //-------------------------------------
