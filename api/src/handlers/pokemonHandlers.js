@@ -6,28 +6,20 @@ const { getPokemonById } = require("../controllers/getPokemonById");
 const { getAllPokemons } = require("../controllers/getAllPokemons");
 const { getPokemonByName } = require("../controllers/getPokemonByName");
 //-------------------------------------
-// GET | Traer: TODOS los Pokemon o por nombre
+// GET | Traer: Pokemon por nombre o traer TODOS
 const getPokemonsHandler = async (req, res) =>
 {
   const { name } = req.query;
 
   try 
   {
-    const result = name ? await getPokemonByName(name) : await getAllPokemons();
-    res.status(200).json(result);
+    const result = name ? await getPokemonByName(name) : await getAllPokemons(); 
+    res.status(200).json(result); 
   } 
   catch (error) 
   {
     res.status(404).send({message:`Error al buscar Pokemon: (${error.message})`});
   }
-
-    //-----------------------------------------
-    // // GET | Traer: Pokemon por Nombre
-    // if (name) res.status(200).send(`NIY: Traigo pokemon por el nombre ${name}`);
-
-    // // GET | Traer: Todos los Pokemon 
-    // else res.status(200).send("NIY: Traigo TODOS los Pokemons");
-     //-----------------------------------------
 }
 //-------------------------------------
 // GET | Traer: Pokemon por ID 

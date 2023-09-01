@@ -21,7 +21,7 @@ module.exports = (sequelize) =>
       unique:true, // El nombre de cada pokemon debe ser único
     },
     //---------------------
-    sprites:{ //Cadena que almacenará la ruta de los sprites
+    sprites:{ // Cadena que almacenará la ruta de los sprites
       type:DataTypes.STRING,
        allowNull:false
     },
@@ -29,7 +29,7 @@ module.exports = (sequelize) =>
     hp:{
        type:DataTypes.STRING,
        allowNull:false,
-        validate: { //quiero que sean positivos del 0 al 999
+        validate: { // Positivos 0 - 999
         min: 0,
         max: 999
       }
@@ -82,5 +82,5 @@ module.exports = (sequelize) =>
       defaultValue:true,
     }
 
-  },{timestamps:false}); // Se pasa como opción al modelo
+  },{timestamps:false}); // No se generan las marcas de tiempo "created_at" y "updated_at" en la bd
 };

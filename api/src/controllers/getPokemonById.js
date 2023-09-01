@@ -1,7 +1,7 @@
 // Este módulo tiene la responsabilidad de traer un Pokemon por Id
 //-------------------------------------
 // Importación de módulos
-const axios = require("axios"); // Para peticiones a la API
+const axios = require("axios"); // Para solicitudes HTTP
 const { Pokemon } = require('../db'); // Trae los modelos
 //-------------------------------------
 const getPokemonById = async ( id, source ) => 

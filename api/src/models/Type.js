@@ -6,7 +6,7 @@ const { DataTypes } = require('sequelize');
 //--------------------------------------
 module.exports = (sequelize) => {
   sequelize.define('type',{
-    id: { //no usar UUID porque es un dolor buscarlo despues
+    id: { 
       type:DataTypes.INTEGER,
       autoIncrement:true,
       primaryKey:true,
@@ -17,6 +17,6 @@ module.exports = (sequelize) => {
        unique:true
     }
   },{
-    timestamps : false //no quiero ver la hora y fecha de creacion
+    timestamps : false // No se generan las marcas de tiempo "created_at" y "updated_at" en la bd
   })
 }
