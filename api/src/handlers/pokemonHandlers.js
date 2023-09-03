@@ -40,7 +40,7 @@ const getPokemonByIdHandler = async (req, res) =>
 }
 //-------------------------------------
 // GET | Traer: Pokemon por tipo
-const getPokemonTypeHandler = () =>
+const getPokemonTypesHandler = () =>
 {
   res.status(200).send("NIY: Traigo pokemon por tipo");
 }
@@ -63,6 +63,6 @@ const createPokemonHandler = async (req, res) =>
 module.exports = {
     getPokemonsHandler,
     getPokemonByIdHandler,  
-    getPokemonTypeHandler, 
+    getPokemonTypesHandler, 
     createPokemonHandler
 };

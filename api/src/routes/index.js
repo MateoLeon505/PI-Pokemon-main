@@ -7,7 +7,7 @@ const pokemonsRouter = Router();
 const {
     getPokemonsHandler,
     getPokemonByIdHandler,
-    getPokemonTypeHandler,
+    getPokemonTypesHandler,
     createPokemonHandler 
   } = require('../handlers/pokemonHandlers');
 //-------------------------------------
@@ -16,7 +16,7 @@ pokemonsRouter.get("/pokemons", getPokemonsHandler);
 
 pokemonsRouter.get("/pokemons/:id", getPokemonByIdHandler);
 
-pokemonsRouter.get("/types", getPokemonTypeHandler);
+pokemonsRouter.get("/types", getPokemonTypesHandler);
 
 pokemonsRouter.post("/pokemons", createPokemonHandler);
 //-------------------------------------

@@ -1,8 +1,9 @@
-// Este módulo tiene la responsabilidad de Traer un pokemon por Name
+// Este módulo tiene la responsabilidad de Traer los tipos de pokemon
 //-------------------------------------
 // Importación de módulos
 const axios = require("axios"); // Para solicitudes HTTP
-const { Pokemon } = require('../db'); // Trae los modelos
+const { Type
+ } = require('../db'); // Trae los modelos
 //-------------------------------------
 const getPokemonByName = async ( name ) =>
 {
