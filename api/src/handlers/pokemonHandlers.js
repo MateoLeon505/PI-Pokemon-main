@@ -5,6 +5,7 @@ const { createPokemon } = require("../controllers/createPokemon");
 const { getPokemonById } = require("../controllers/getPokemonById");
 const { getAllPokemons } = require("../controllers/getAllPokemons");
 const { getPokemonByName } = require("../controllers/getPokemonByName");
+const { getPokemonTypes } = require("../controllers/getPokemonTypes");
 //-------------------------------------
 // GET | Traer: Pokemon por nombre o traer TODOS
 const getPokemonsHandler = async (req, res) =>
@@ -14,11 +15,11 @@ const getPokemonsHandler = async (req, res) =>
   try 
   {
     const result = name ? await getPokemonByName(name) : await getAllPokemons(); 
-    res.status(200).json(result); 
+    res.status(201).json(result); 
   } 
   catch (error) 
   {
-    res.status(404).send({message:`Error al buscar Pokemon: (${error.message})`});
+    res.status(404).send({error: error.message});
   }
 }
 //-------------------------------------
@@ -35,14 +36,22 @@ const getPokemonByIdHandler = async (req, res) =>
   } 
   catch (error) 
   {
-    res.status(404).send({message:`Error al buscar con ese id: (${error.message})`});
+    res.status(404).send({error: error.message});
   }
 }
 //-------------------------------------
 // GET | Traer: Pokemon por tipo
-const getPokemonTypesHandler = () =>
+const getPokemonTypesHandler = async ( req, res ) =>
 {
-  res.status(200).send("NIY: Traigo pokemon por tipo");
+  try 
+  {
+    const getTypes = await getPokemonTypes();
+    res.status(201).json(getTypes);  
+  } 
+  catch (error) 
+  {
+    res.status(404).send({error: error.message});  
+  }
 }
 //-------------------------------------
 // POST | Crear: Pokemon 
