@@ -73,7 +73,7 @@ module.exports = (sequelize) =>
       type:DataTypes.STRING,
        validate: {
         min: 0,
-        max:9999
+        max: 999
       }
     },
     //---------------------    
