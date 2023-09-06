@@ -1,0 +1,33 @@
+.cardContainer {
+    background-color: #FFFFFF; /* Fondo blanco */
+    border: 2px solid #CE1126; /* Borde rojo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin: 20px; /* Margen exterior de la tarjeta */
+    max-width: 300px; /* Ancho máximo de la tarjeta */
+    text-align: center; /* Alineación de contenido centrada */
+    transition: transform 0.2s ease; /* Transición suave en hover */
+}
+
+.cardContainer:hover {
+    transform: translateY(-5px); /* Levanta la tarjeta en hover */
+}
+
+.cardName {
+    font-size: 24px; /* Tamaño de fuente del nombre */
+    font-weight: bold; /* Texto en negrita */
+    color: #CE1126; /* Color rojo para el nombre */
+    margin: 15px 0; /* Espacio arriba y abajo del nombre */
+}
+
+.cardImage {
+    max-width: 100%; /* Imagen se ajusta al ancho de la tarjeta */
+    height: auto; /* Altura automática */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+.cardStats {
+    font-size: 16px; /* Tamaño de fuente para estadísticas */
+    color: #0098D8; /* Color azul para estadísticas */
+    padding: 10px 0; /* Espaciado interior de las estadísticas */
+}

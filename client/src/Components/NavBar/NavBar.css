@@ -1,0 +1,21 @@
+.mainContainer{
+    display: flex;
+    background-color: #CE1126;
+    color: #FFFFFF;
+    justify-content: space-between;
+    flex-direction: row;
+    border-radius: 15px;
+    border: 1px solid #FFCB05;
+}
+.mainContainer a {
+    color: #FFFFFF; /* Texto blanco */
+    text-decoration: none; /* Quita subrayado de enlaces */
+    padding: 10px 15px; /* Espaciado interior de los enlaces */
+}
+
+/* Estilo para los enlaces cuando se pasan sobre ellos */
+.mainContainer a:hover {
+    background-color: #FFCB05; /* Fondo amarillo en hover */
+    color: #CE1126; /* Texto rojo en hover */
+    border-radius: 5px; /* Bordes redondeados en hover */
+}

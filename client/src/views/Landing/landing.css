@@ -1,0 +1,32 @@
+/* Estilo para el botón en la Landing Page */
+
+/* Estilo para las imágenes */
+.landing-images {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: flex-start; /* Centrar verticalmente */
+    height: 700px; /* Altura ocupada en pantalla */
+}
+
+.landingButton {
+    background-color: #CE1126; /* Fondo rojo */
+    color: #FFFFFF; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interior del botón */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave en hover */
+}
+
+/* Estilo para el botón cuando se pasa sobre él */
+.landingButton:hover {
+    background-color: #FFCB05; /* Fondo amarillo en hover */
+    color: #CE1126; /* Texto rojo en hover */
+}
+
+.landingButton a {
+    color: #FFFFFF; /* Texto blanco */
+    text-decoration: none; /* Quita subrayado de enlaces */
+    padding: 10px 15px; /* Espaciado interior de los enlaces */
+}
