@@ -1,5 +1,5 @@
 /* Estilo para el botón en la Landing Page */
-
+/*----------------------------------------------*/
 /* Estilo para las imágenes */
 .landing-images {
     display: flex;
@@ -7,26 +7,26 @@
     align-items: flex-start; /* Centrar verticalmente */
     height: 700px; /* Altura ocupada en pantalla */
 }
-
+/*----------------------------------------------*/
+/* Estilo para las imágenes */
 .landingButton {
+    font-family: fantasy;
     background-color: #CE1126; /* Fondo rojo */
     color: #FFFFFF; /* Texto blanco */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     padding: 10px 20px; /* Espaciado interior del botón */
-    font-size: 16px; /* Tamaño de fuente */
+    font-size: 30px; /* Tamaño de fuente */
+    text-align: center;
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave en hover */
 }
-
+/*-----------------*/
 /* Estilo para el botón cuando se pasa sobre él */
-.landingButton:hover {
+.landingButton:hover 
+{
     background-color: #FFCB05; /* Fondo amarillo en hover */
-    color: #CE1126; /* Texto rojo en hover */
+    color: #0047AB; /* Texto rojo en hover */
+    border-radius: 5px; /* Bordes redondeados en hover */
 }
 
-.landingButton a {
-    color: #FFFFFF; /* Texto blanco */
-    text-decoration: none; /* Quita subrayado de enlaces */
-    padding: 10px 15px; /* Espaciado interior de los enlaces */
-}
+

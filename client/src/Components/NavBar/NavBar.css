@@ -1,4 +1,6 @@
 .mainContainer{
+    font-family: fantasy;
+    font-size: 25px;
     display: flex;
     background-color: #CE1126;
     color: #FFFFFF;
