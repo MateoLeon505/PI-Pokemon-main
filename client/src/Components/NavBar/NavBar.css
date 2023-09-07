@@ -1,14 +1,59 @@
-.mainContainer{
+/* Barra de navegación */
+/*----------------------------------------------------*/
+/* Se trae la fuente de texto */
+.image
+{
+    height: 30px;
+    width: 30px;
+}
+.blanco
+{
     font-family: fantasy;
-    font-size: 25px;
+    font-size: 30px;
+    color: white;
+    letter-spacing: 1px; /* Espaciado entre letras */
+    margin-right: -2px; /* Ajusta el margen derecho (puedes cambiar este valor según tus necesidades) */
+    margin-left: -2px;
+    position: relative; /* Para aplicar sombra de texto */
+    text-shadow: /*Sombra*/
+    -2px -2px 0 black, /*Sombra esquina Sup Izq*/
+    2px -2px 0 black, /*Sombra esquina Sup Der*/
+    -2px 2px 0 black, /*Sombra esquina inf izq*//*Desenfoque 0 = Nítidez*/
+    2px 2px 0 black, /*Sombra esquina inf der*/
+    0px 0px 5px rgba(0,0,0,0.5); /* Sombras internas para evitar superposición */
+}
+.rojo
+{
+    font-family: fantasy;
+    font-size: 31px;
+    color: #CE1126;
+    letter-spacing: 1px; /* Espaciado entre letras */
+    position: relative; /* Para aplicar sombra de texto */
+    text-shadow: /*Sombra*/
+    -2px -2px 0 black, /*Sombra esquina Sup Izq*/
+    2px -2px 0 black, /*Sombra esquina Sup Der*/
+    -2px 2px 0 black, /*Sombra esquina inf izq*//*Desenfoque 0 = Nítidez*/
+    2px 2px 0 black, /*Sombra esquina inf der*/
+    0px 0px 5px rgba(0,0,0,0.5); /* Sombras internas para evitar superposición */
+}
+/*Barra*/
+.mainContainer
+{
+    font-family: cursive;
+    font-size: 20px;
     display: flex;
-    background-color: #CE1126;
+    background-color: black;
     color: #FFFFFF;
     justify-content: space-between;
     flex-direction: row;
-    border-radius: 15px;
-    border: 1px solid #FFCB05;
+    align-items: center;
+    border: 1px solid black;
+    padding-left: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Asegúrate de que esté encima de otros elementos */
 }
+
 .mainContainer a {
     color: #FFFFFF; /* Texto blanco */
     text-decoration: none; /* Quita subrayado de enlaces */
@@ -17,7 +62,7 @@
 
 /* Estilo para los enlaces cuando se pasan sobre ellos */
 .mainContainer a:hover {
-    background-color: #FFCB05; /* Fondo amarillo en hover */
     color: #CE1126; /* Texto rojo en hover */
-    border-radius: 5px; /* Bordes redondeados en hover */
 }
+
+
