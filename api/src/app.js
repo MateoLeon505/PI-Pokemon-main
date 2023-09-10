@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+const cors = require('cors'); // Comunicación 
 //----------------------------------------------
 // Conexión a la bd
 require('./db.js');
@@ -17,6 +18,7 @@ const server = express();
 server.name = 'API';
 //----------------------------------------------
 // Configuración middlewares
+server.use(cors()); // Que venga cualquier cliente a comunicarse con el servidor
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());

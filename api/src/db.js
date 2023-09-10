@@ -54,7 +54,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Pokemon, Type } = sequelize.models;
 //-------------------------------------
 // Aca vendrian las relaciones -> definir relaciones
-// Product.hasMany(Reviews);
+// Relación muchos a muchos entre pokemon y types
 Pokemon.belongsToMany(Type, { through: "pokemon_type" });
 Type.belongsToMany(Pokemon, { through: "pokemon_type" });
 //-------------------------------------

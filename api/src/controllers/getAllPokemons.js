@@ -1,12 +1,12 @@
 // Este módulo tiene la responsabilidad de Traer TODOS los pokemon
 //-------------------------------------
 // Importación de módulos
-const { Pokemon } = require('../db'); // Trae los modelos
+const { Pokemon, Type } = require('../db'); // Trae los modelos
 const axios = require("axios"); // Para solicitudes HTTP
 //-------------------------------------
 const getAllPokemons = async () =>
 {
-    const dataBasePokemons =  await Pokemon.findAll({ attributes:{ exclude: ['custom'] }}); // Trae pokemons de la bd
+    const dataBasePokemons =  await Pokemon.findAll({ include: Type, attributes:{ exclude: ['custom'] }}); // Trae pokemons de la bd
 
     const apiPokemons = [];
 
@@ -36,7 +36,11 @@ const getAllPokemons = async () =>
                 defense: detailedPokemon.stats[2].base_stat,
                 speed: detailedPokemon.stats[5].base_stat,
                 height: detailedPokemon.height,
-                weight: detailedPokemon.weight
+                weight: detailedPokemon.weight,
+                types: detailedPokemon.types.map((tipos) =>
+                {
+                    return tipos.type.name;
+                })
             }
         })
     );

@@ -57,10 +57,11 @@ const getPokemonTypesHandler = async ( req, res ) =>
 // POST | Crear: Pokemon 
 const createPokemonHandler = async (req, res) =>
 { 
+  const { id, name, sprites, hp, attack, defense, speed, height, weight, types } = req.body;
+
   try 
   {
-    const { id, name, sprites, hp, attack, defense, speed, height, weight } = req.body;
-    const newPokemon = await createPokemon( id, name, sprites, hp, attack, defense, speed, height, weight );
+    const newPokemon = await createPokemon( id, name, sprites, hp, attack, defense, speed, height, weight, types );
     res.status(201).json(newPokemon); 
   } 
   catch (error) 
