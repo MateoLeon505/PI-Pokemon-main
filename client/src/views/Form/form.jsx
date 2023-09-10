@@ -2,12 +2,21 @@
 //----------------------------------------------
 // Importación de módulos y librerías
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 import './form.css';
 //----------------------------------------------
 const Form = () =>
 {
-    // Regex para url de la imagen
+    // Regex para validar url de la imagen
     const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/;
+    //------------------
+    // Tipos de pokemon
+    const types = useSelector(
+        (state) => {
+            return state.types
+        });
+    const typesOptions = types.map((type) => type = type.name );
     //------------------
     // Estado
     const [ form, setForm ] = useState(
@@ -23,6 +32,9 @@ const Form = () =>
             types: [],
         });
     //------------------
+    // Estconst [ errors, setErrors ] = useState
+    const [ selectedTypes, setSelectedTypes ] = useState([]);
+    //------------------
     // Estado de Errores
     const [ errors, setErrors ] = useState(
         {
@@ -36,39 +48,37 @@ const Form = () =>
             weight: "",
             types: [],
         });
-    //------------------
+    //------------------ 
     // Validaciones: Cuando se haga un cambio, quiero validar
     const validate = (form) => // Recibe el estado del form
     {
+        // Sprites
         if (urlRegex.test(form.sprites))
         {
-            console.log(`URL: ${form.sprites} Correcta👍`);
+            setErrors(({...errors, sprites:"👍"}));
         }
         else
         {
-            console.log(`URL: ${form.sprites} inválida😞❌`);
+            setErrors(({...errors, sprites:"❌"}));
+        }
+        if (form.sprites === "")
+        {
+            setErrors(({...errors, sprites:"💬"}));
         }
     }
-    //------------------ 
-    // Tipos de pokemon
-    const typesOptions = ['bug', 'dark', 'dragon', 'electric', 'fairy', 'fighting', 'fire', 'flying', 
-    'ghost', 'grass', 'ground', 'ice', 'normal', 'poison', 'psychic', 'rock', 'shadow', 'steel', 'unknown', 'water'];
     //------------------ 
     // Maneja cambios en el select múltiple
     const selectHandler = (event) =>
     {
         const selectedOption = event.target.value;
 
-        if (form.types.includes(selectedOption)) 
+        if (selectedTypes.includes(selectedOption)) 
         {
-            setForm({ ...form, types: form.types.filter((t) => t !== selectedOption) });
+            setSelectedTypes([ ...selectedTypes.filter((type) => type !== selectedOption) ]);
         }
         else
         {
-            setForm((prevState) => ({
-                ...prevState,
-                types: prevState.types.concat(selectedOption),
-            }));
+            setSelectedTypes([ ...selectedTypes, selectedOption ]);
         }
     }
     //------------------ 
@@ -77,13 +87,23 @@ const Form = () =>
     {
         const property = event.target.name; // Quién modificó
         const value = event.target.value; // Valor modificado
+
+        validate({ ...form, [property]: value }); // Hace Validación
+
         setForm({ ...form, [property]: value }); // Guarda Cambios en el form
-        validate(form);
     };
+    //------------------
+    // Para que no se refresque la page
+    const submitHandler = (event) =>
+    {
+        event.preventDefault();
+        const response = axios.post("http://localhost:3001/pokemons", form) // La data se va a la bd
+        .then(res=>alert(res))
+    }
     //------------------    
     return(
     <div className = "form-container">
-        <form>
+        <form onSubmit = {submitHandler}>
             <h1 className = 'pokemon-text'>Crear Pokémon</h1>
             
             <div>
@@ -92,7 +112,7 @@ const Form = () =>
             </div>
 
             <div>
-                <label className = 'properties' >Imagen</label>
+                <label className = 'properties' >Imagen{errors.sprites && <span>{errors.sprites}</span>}</label> 
                 <input type = "text" value = {form.sprites} onChange = {changeHandler} name = 'sprites' placeholder = "https://example.jpg" className = 'entrada-texto'></input> 
             </div>
             {/*-------------------------------------------------- Stats: --------------------------------------------*/}
@@ -137,20 +157,20 @@ const Form = () =>
             <div>
                 <label className = 'properties' >Tipos</label>
                 <div className = 'types-container'>
-                    {typesOptions && 
-                    typesOptions.map((type)=>(
+                    {typesOptions.map((type)=>(
                         <div className = 'types-checkbox'>
-                            <label key = {type} className = 'types-checkbox-label'>
-                            <input type = "checkbox" value = {type} onChange = {selectHandler}/> {type} 
+                            <label className = 'types-checkbox-label'>
+                                <input type = "checkbox" value = {type} onChange = {selectHandler}/> 
+                                {type} 
                             </label>
                         </div>
                         ))
-                    };
+                    }
                 </div>
             </div>
             <div>
                 <br />
-                <button className = 'boton'>Crear</button>
+                <button type = 'sumbit' className = 'boton'>Crear</button>
             </div>
         </form>
     </div>

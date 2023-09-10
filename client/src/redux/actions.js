@@ -2,7 +2,7 @@
 //----------------------------------------------
 // Importación modulos y librerías
 import axios from "axios";
-const { GET_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_NAME } = require('./action-types');
+const { GET_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_NAME, GET_POKEMON_TYPES } = require('./action-types');
 //----------------------------------------------
 // Actions:
 const getPokemons = () =>
@@ -22,6 +22,16 @@ const getPokemonById = (id) =>
         dispatch({ type: GET_POKEMON_DETAIL, payload: response.data });
     };
 };
+//-----------------
+const getPokemonTypes = () =>
+{
+    return async function (dispatch)
+    {
+        const response = await axios.get(`http://localhost:3001/types`);
+        dispatch({ type: GET_POKEMON_TYPES, payload: response.data });
+    };
+};
+
 //----------------------------------------------
 // Exportación actions
-export { getPokemons, getPokemonById };
+export { getPokemons, getPokemonById, getPokemonTypes };

@@ -1,13 +1,14 @@
 // La responsabilidad de este módulo es especificar el cambio de estado en respuesta a las acciones
 //----------------------------------------------
 // Trae 'action-types'
-import { GET_POKEMONS, GET_POKEMON_DETAIL } from './action-types';
+import { GET_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_TYPES } from './action-types';
 //----------------------------------------------
 // Define estado inicial
 const initialState = // Estado Global
 {
     pokemons: [],
-    detail: []
+    detail: [],
+    types: []
 };
 //---------------------------------------------- 
 // Creación del reducer
@@ -26,6 +27,13 @@ const reducer = (state = initialState, action) =>
                 ...state, // Copia del estado
                 detail: action.payload
             }
+        
+        case GET_POKEMON_TYPES:
+            return {
+                ...state,
+                types: action.payload
+            }
+            
         default:
             return { ...state }; //Copia del estado
     }
