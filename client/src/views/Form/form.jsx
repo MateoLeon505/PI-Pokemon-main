@@ -13,7 +13,8 @@ const Form = () =>
     //------------------
     // Tipos de pokemon
     const types = useSelector(
-        (state) => {
+        (state) => 
+        {
             return state.types
         });
     const typesOptions = types.map((type) => type = type.name );
@@ -31,9 +32,6 @@ const Form = () =>
             weight: "",
             types: [],
         });
-    //------------------
-    // Estconst [ errors, setErrors ] = useState
-    const [ selectedTypes, setSelectedTypes ] = useState([]);
     //------------------
     // Estado de Errores
     const [ errors, setErrors ] = useState(
@@ -70,15 +68,15 @@ const Form = () =>
     // Maneja cambios en el select múltiple
     const selectHandler = (event) =>
     {
-        const selectedOption = event.target.value;
+        const selectedOption = event.target.value; //  Type seleccionado
 
-        if (selectedTypes.includes(selectedOption)) 
+        if (form.types.includes(selectedOption)) // Si YA está
         {
-            setSelectedTypes([ ...selectedTypes.filter((type) => type !== selectedOption) ]);
+            setForm({ ...form, types: form.types.filter((type) => type !== selectedOption) }); // Quítalo
         }
-        else
+        else // Si no
         {
-            setSelectedTypes([ ...selectedTypes, selectedOption ]);
+            setForm({ ...form, types: [...form.types, selectedOption ]}); // Agrégalos
         }
     }
     //------------------ 
@@ -93,12 +91,15 @@ const Form = () =>
         setForm({ ...form, [property]: value }); // Guarda Cambios en el form
     };
     //------------------
-    // Para que no se refresque la page
+    // Respuesta del botón
     const submitHandler = (event) =>
     {
-        event.preventDefault();
-        const response = axios.post("http://localhost:3001/pokemons", form) // La data se va a la bd
-        .then(res=>alert(res))
+        event.preventDefault(); // Para que no se refresque la page
+        axios.post("http://localhost:3001/pokemons", form) // La data se va a la bd
+        .then((res) =>
+            {
+                alert('Pokemon creado correctamente')
+            });
     }
     //------------------    
     return(
