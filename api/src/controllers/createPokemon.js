@@ -8,18 +8,19 @@ const { Pokemon, Type } = require('../db'); // Trae los modelos
 const createPokemon = async ( id, name, sprites, hp, attack, defense, speed, height, weight, types ) => 
 {
     // Crea Pokemon con las propiedades recibidas
-    const newPokemon = await Pokemon.create({ id, name, sprites, hp, attack, defense, speed, height, weight }); 
+    const newPokemon = await Pokemon.create({ id, name, sprites, hp, attack, defense, speed, height, weight});
     //----------------------------
-    // Busca los tipos en la base de datos por nombre
-    const typeInstances = await Type.findAll(
+    // // Busca los 'types' en la bd que coincidan con los que me llegan
+    const bringTypes = await Type.findAll(
         {
-            where: { 
-                name: types.map((type) => type.name ), 
+            where: 
+            { 
+                name: types
             },
         });
     //----------------------------
-    // Asociar los tipos al Pokémon a través de la tabla intermedia PokemonType
-    await newPokemon.setTypes(typeInstances);
+    // Asociar los tipos al Pokémon recien creado
+    await newPokemon.setTypes(bringTypes);
     //----------------------------
     return newPokemon;
 }

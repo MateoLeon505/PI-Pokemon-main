@@ -6,13 +6,45 @@ const axios = require("axios"); // Para solicitudes HTTP
 //-------------------------------------
 const getAllPokemons = async () =>
 {
-    const dataBasePokemons =  await Pokemon.findAll({ include: Type, attributes:{ exclude: ['custom'] }}); // Trae pokemons de la bd
-
-    const apiPokemons = [];
-
+    // Trae pokemons de la bd
+    const dataBasePokemons =  await Pokemon.findAll(
+        { 
+            include:
+            {
+                model: Type,
+                as: 'types',
+            },
+            attributes:
+            { 
+                exclude: ['custom'],
+            }
+        }); 
+    //-------------------------------
+    // Limpia types
+    const dbReady = dataBasePokemons.map((pokemon) =>
+    {
+        return{
+            id: pokemon.id,
+            name: pokemon.name,
+            sprites: pokemon.sprites,
+            hp: pokemon.hp,
+            attack: pokemon.attack,
+            defense: pokemon.defense,
+            speed: pokemon.speed,
+            height: pokemon.height,
+            weight: pokemon.weight,
+            types: pokemon.types.map((type) =>
+            {
+                return type.name;
+            })
+        }
+    });
+    //-------------------------------
+    const apiPokemons = []; // Para pokemons de la api
+    //-------------------------------
     let page = "https://pokeapi.co/api/v2/pokemon"; // Para obtener la página de la API
-
-    while (apiPokemons.length + dataBasePokemons.length < 12) //Alcance total pokemons API
+    //-------------------------------
+    while (apiPokemons.length + dbReady.length < 12) //Alcance total pokemons API
     {
         const response = await axios.get(page); // Petición a la página
         const pokemonsPage = response.data.results; // Trae pokemons Crudos
@@ -20,8 +52,8 @@ const getAllPokemons = async () =>
 
         apiPokemons.push(...pokemonsPage); // Guarda la página en el array
     }
-//-------------------------------------
-// Trae las propiedades de los pokemon: Pokemon de API Listo ✔
+    //-------------------------------------
+    // Trae las propiedades de los pokemon: Pokemon de API Listo ✔
     const cleanPokemons = await Promise.all(
         apiPokemons.map(async (pokemon) =>
         {
@@ -44,7 +76,8 @@ const getAllPokemons = async () =>
             }
         })
     );
-    return [...dataBasePokemons, ...cleanPokemons]; // Retorna TODOS los pokemon
+    //-------------------------------------
+    return [...dbReady, ...cleanPokemons]; // Retorna TODOS los pokemon
 }
 //-------------------------------------
 // Exporta la función
