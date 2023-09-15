@@ -53,15 +53,15 @@ const Form = () =>
         // Sprites
         if (urlRegex.test(form.sprites))
         {
-            setErrors(({...errors, sprites:"👍"}));
+            setErrors(({...errors, sprites:""}));
         }
         else
         {
-            setErrors(({...errors, sprites:"❌"}));
+            setErrors(({...errors, sprites:"⚠️"}));
         }
         if (form.sprites === "")
         {
-            setErrors(({...errors, sprites:"💬"}));
+            setErrors(({...errors, sprites:""}));
         }
     }
     //------------------ 
@@ -106,15 +106,26 @@ const Form = () =>
     <div className = "form-container">
         <form onSubmit = {submitHandler}>
             <h1 className = 'pokemon-text'>Crear Pokémon</h1>
-            
+            <div className = 'error-container'>
+                {errors.sprites && 
+                    <div className = 'error-box'>
+                        <span className = 'global-message'>URL inválida</span>
+                    </div>
+                }
+            </div>
+            <br />
+            <br />
             <div>
                 <label className = 'properties' >Nombre</label>
                 <input type = "text" value = {form.name} onChange = {changeHandler} name = 'name' className = 'entrada-texto'></input> 
             </div>
 
             <div>
-                <label className = 'properties' >Imagen{errors.sprites && <span>{errors.sprites}</span>}</label> 
-                <input type = "text" value = {form.sprites} onChange = {changeHandler} name = 'sprites' placeholder = "https://example.jpg" className = 'entrada-texto'></input> 
+                <label className = 'properties' >Imagen</label>
+                <div className = 'error-sprites-container'>
+                    <input type = "text" value = {form.sprites} onChange = {changeHandler} name = 'sprites' placeholder = "https://example.jpg" className = 'entrada-texto'></input>
+                    {errors.sprites && <span className = 'error-message'>{errors.sprites}</span>} 
+                </div> 
             </div>
             {/*-------------------------------------------------- Stats: --------------------------------------------*/}
             <div className = 'stats-container'>

@@ -1,22 +1,54 @@
 /* Formulario */
 /*----------------------------------------------------*/
+/* Establece la imagen de fondo para toda la página */
+body 
+{
+    background-color: #F0F0F0;
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen horizontal y verticalmente */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+}
+/*----------------------------------------------------*/
+/* Mensaje Global de error */
+.error-box
+{
+    border: 1px solid #C73323; /* Borde alrededor del error */
+    border-radius: 5px;
+    height: 22px;
+    max-width: 370px; /* Ancho máximo del contenedor */
+    background-color: #C73323;
+    text-align: center;
+    padding: 5px 10px; /* Ajusta el espaciado interior según tu preferencia */
+}
+.error-container
+{
+    position: fixed; /* Posición fija */
+    top: 0 auto; /* Ajusta la posición superior a 0 para que esté en la parte superior */
+    right: 850px; /* Ajusta la posición derecha a 0 para que esté en la parte derecha */
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+}
+.global-message
+{
+    color: white;
+}
+/*----------------------------------------------------*/
+/* Formulario */
 .form-container 
 {
-    height: 700px;
+    height: 720px;
     width: 400px;
     margin: 0 auto;
     margin-top: 40px;
     padding: 20px;
-    border: 3px solid #CE1126;
     border-radius: 10px;
     background-color:#FFFFFF;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Establece un fondo blanco semi-transparente para el formulario */
 }
-/*----------------------------------------------------
-/* Línea */
-
 /*----------------------------------------------------
 /* Etiquetas */
 .properties
@@ -24,7 +56,20 @@
     font-size: 17px;
     display: block;
     margin-bottom: 5px;
-    color: #CE1126;
+    color:black;
+    font-weight: bold;
+}
+/*----------------------------------------------------
+/* Div que contiene input y errores de sprites */
+.error-sprites-container
+{
+    position: relative;
+}
+.error-message
+{
+    position: absolute;
+    top: 5px;
+    right: 15px; /* Ajusta la posición a la derecha según tu preferencia */
 }
 /*----------------------------------------------------
 /* Importa la fuente personalizada */
@@ -39,7 +84,7 @@
 .pokemon-text
 {
     font-family: 'PokemonFont'; /* Nombre fuente */
-    font-size: 40px; /* Tamaño fuente */
+    font-size: 38px; /* Tamaño fuente */
     color: #FFCB05; /* Color fuente */
     text-align: center; /* Centrar el texto horizontalmente */
     letter-spacing: 4px; /* Espaciado entre letras */
@@ -58,9 +103,10 @@
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #CE1126;
+    border: 1px solid black;
     border-radius: 5px;
     text-align: center;
+    box-shadow: 0px 4px 6px rgba(1, 1, 1, 0.1); /* Agrega sombra */
 }
 /* Entradas de stat 0 - 999 */
 .entrada-stats
@@ -68,8 +114,9 @@
     width: 70%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #CE1126;
+    border: 1px solid black;
     border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(1, 1, 1, 0.1); /* Agrega sombra */
 }
 /*----------------------------------------------------*/
 /* Contenedor stats (3) */
@@ -87,17 +134,27 @@
     flex: 1; /* Cada estadística ocupa el mismo espacio horizontal */
     margin-right: 2px; /* Espacio entre estadísticas */
 }
+
+/* Cambia el color de fondo de los inputs en hover */
+.entrada-texto:focus,
+.entrada-stats:focus
+{
+  background-color: #E6F2FF; /* Cambia el color de fondo a verde en hover */
+  border: 2px solid #2D6DB3;
+}
+
 /*----------------------------------------------------*/
 /* Estilo para los contenedores de tipos */
 .types-container 
 {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples filas */
-    border: 1px solid #CE1126; /* Borde alrededor de los tipos */
+    border: 1px solid black; /* Borde alrededor de los tipos */
     border-radius: 5px;
     padding: 10px; /* Espaciado interior del contenedor */
     max-width: 360px; /* Ancho máximo del contenedor */
     margin: 0 auto; /* Centrar horizontalmente */
+    
 }
 
 /* Estilo para los tipos de Pokémon */
@@ -114,7 +171,7 @@
 .types-checkbox-label 
 {
     font-size: 16px; /* Tamaño de fuente */
-    color: #CE1126; /* Color del texto */
+    color: black; /* Color del texto */
     white-space: nowrap; /* Evita que el texto se divida en varias líneas */
     text-overflow: ellipsis; /* Muestra puntos suspensivos cuando el texto es demasiado largo */
     overflow: hidden;
