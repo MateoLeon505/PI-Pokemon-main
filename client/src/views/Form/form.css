@@ -12,23 +12,28 @@ body
 }
 /*----------------------------------------------------*/
 /* Mensaje Global de error */
+.errors-container
+{
+    position: absolute; /* Para que no mueva otros elementos */
+    display: flex; /* Usar flexbox */
+    flex-direction: row; /* Organizar los mensajes de error en fila horizontal */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+    left: 50%; /* Centra horizontalmente en relación con el contenedor principal */
+    transform: translateX(-50%); /* Centra horizontalmente el propio elemento */
+}
 .error-box
 {
-    border: 1px solid #C73323; /* Borde alrededor del error */
+    margin-right: 10px;
+    border: 1px solid #f40066; /* Borde alrededor del error */
     border-radius: 5px;
     height: 22px;
-    max-width: 370px; /* Ancho máximo del contenedor */
-    background-color: #C73323;
+    max-width: 150px;
+    background-color: #f40066;
     text-align: center;
     padding: 5px 10px; /* Ajusta el espaciado interior según tu preferencia */
 }
-.error-container
-{
-    position: fixed; /* Posición fija */
-    top: 0 auto; /* Ajusta la posición superior a 0 para que esté en la parte superior */
-    right: 850px; /* Ajusta la posición derecha a 0 para que esté en la parte derecha */
-    z-index: 100; /* Asegura que esté por encima de otros elementos */
-}
+
 .global-message
 {
     color: white;
@@ -56,7 +61,7 @@ body
     font-size: 17px;
     display: block;
     margin-bottom: 5px;
-    color:black;
+    color:#C73323;
     font-weight: bold;
 }
 /*----------------------------------------------------
@@ -85,15 +90,16 @@ body
 {
     font-family: 'PokemonFont'; /* Nombre fuente */
     font-size: 38px; /* Tamaño fuente */
-    color: #FFCB05; /* Color fuente */
+    color: #E6BB0F; /* Color fuente */
     text-align: center; /* Centrar el texto horizontalmente */
     letter-spacing: 4px; /* Espaciado entre letras */
     position: relative; /* Para aplicar sombra de texto */
+    margin-bottom: 5px;
     text-shadow: /*Sombra*/
-    -2px -2px 0 #0047AB, /*Sombra esquina Sup Izq*/
-    2px -2px 0 #0047AB, /*Sombra esquina Sup Der*/
-    -2px 2px 0 #0047AB, /*Sombra esquina inf izq*//*Desenfoque 0 = Nítidez*/
-    2px 2px 0 #0047AB, /*Sombra esquina inf der*/
+    -2px -2px 0 #2D6DB3, /*Sombra esquina Sup Izq*/
+    2px -2px 0 #2D6DB3, /*Sombra esquina Sup Der*/
+    -2px 2px 0 #2D6DB3, /*Sombra esquina inf izq*//*Desenfoque 0 = Nítidez*/
+    2px 2px 0 #2D6DB3, /*Sombra esquina inf der*/
     0px 0px 5px rgba(0,0,0,0.5); /* Sombras internas para evitar superposición */
 }
 /*----------------------------------------------------*/
@@ -103,7 +109,7 @@ body
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid black;
+    border: 1px solid #C73323;
     border-radius: 5px;
     text-align: center;
     box-shadow: 0px 4px 6px rgba(1, 1, 1, 0.1); /* Agrega sombra */
@@ -114,7 +120,7 @@ body
     width: 70%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid black;
+    border: 1px solid #C73323;
     border-radius: 5px;
     box-shadow: 0px 4px 6px rgba(1, 1, 1, 0.1); /* Agrega sombra */
 }
@@ -135,13 +141,7 @@ body
     margin-right: 2px; /* Espacio entre estadísticas */
 }
 
-/* Cambia el color de fondo de los inputs en hover */
-.entrada-texto:focus,
-.entrada-stats:focus
-{
-  background-color: #E6F2FF; /* Cambia el color de fondo a verde en hover */
-  border: 2px solid #2D6DB3;
-}
+
 
 /*----------------------------------------------------*/
 /* Estilo para los contenedores de tipos */
@@ -149,7 +149,7 @@ body
 {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples filas */
-    border: 1px solid black; /* Borde alrededor de los tipos */
+    border: 1px solid #C73323; /* Borde alrededor de los tipos */
     border-radius: 5px;
     padding: 10px; /* Espaciado interior del contenedor */
     max-width: 360px; /* Ancho máximo del contenedor */
@@ -181,7 +181,7 @@ body
 /* Botón */
 .boton
 {
-    background-color: #CE1126;
+    background-color: #263259;
     color: #FFFFFF;
     border: none;
     border-radius: 5px;
@@ -192,6 +192,11 @@ body
 
 .boton:hover 
 {
-    background-color: #FFCB05;
-    color: #0047AB;
+    background-color: #E6BB0F;
+    color: #263259;
 }
+
+.boton:active{animation:jello-horizontal .9s linear both} @keyframes jello-horizontal
+{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(1.25,.75,1)}40%{transform:scale3d(.75,1.25,1)}
+50%{transform:scale3d(1.15,.85,1)}65%{transform:scale3d(.95,1.05,1)}75%{transform:scale3d(1.05,.95,1)}
+100%{transform:scale3d(1,1,1)}}
