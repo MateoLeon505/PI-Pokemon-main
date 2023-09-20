@@ -44,7 +44,7 @@ const getAllPokemons = async () =>
     //-------------------------------
     let page = "https://pokeapi.co/api/v2/pokemon"; // Para obtener la página de la API
     //-------------------------------
-    while (apiPokemons.length + dbReady.length < 12) //Alcance total pokemons API
+    while (apiPokemons.length < 180 + dbReady.length ) //Alcance total pokemons API
     {
         const response = await axios.get(page); // Petición a la página
         const pokemonsPage = response.data.results; // Trae pokemons Crudos
