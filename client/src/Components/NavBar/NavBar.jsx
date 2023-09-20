@@ -2,22 +2,25 @@
 //----------------------------------------------
 //Importa los componentes necesarios de las bibliotecas
 import { NavLink } from 'react-router-dom';
+import SearchBar from '../SearchBar/searchBar';
 import './NavBar.css';
+import Pokeball from '../../images/Pokeball.png';
 //----------------------------------------------
 // Define el componente
-const NavBar = () =>
+const NavBar = ({ onSearch }) =>
 {
     return (
         <div className = 'mainContainer'>
             <div>
-                <span className = 'blanco'> P</span> 
-                <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1200px-Pok%C3%A9_Ball_icon.svg.png" alt = "PokeBall" className = 'image'/>
-                <span className = 'blanco'>KE</span>
+                <span className = 'blanco'>POKE</span> 
                 <span className = 'rojo'>   APP</span>
             </div>
-            <NavLink to = "/" > Pokemons </NavLink>
-            <NavLink to = "/home" > Home </NavLink>
+            <SearchBar onSearch = {onSearch}></SearchBar>
+            <NavLink to = "/home" > Home  </NavLink>
             <NavLink to = "/create" > Crear </NavLink>
+            <NavLink to = "/create" > Favoritos </NavLink>
+            <NavLink to = "/create" > About </NavLink>
+            <NavLink to = "/" > <img src = {Pokeball} alt = "PokeBall" className = 'image'/> </NavLink>
         </div>
     );
 }

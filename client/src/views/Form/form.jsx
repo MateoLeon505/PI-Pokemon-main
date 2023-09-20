@@ -131,7 +131,6 @@ const Form = () =>
                     types: [], 
                 });
             
-
         }
         else
         {
@@ -151,13 +150,21 @@ const Form = () =>
                             <span className = 'global-message'>URL inválida</span>
                         </div>
                 }
+
+                {
+                    errors.hp || errors.attack || errors.defense || errors.speed || errors.height || errors.weight ?
+                        <div className = 'error-box'>
+                            <span className = 'global-message'>Valor(es) inválido(s)</span>
+                        </div>
+                    : null
+                }
             </div>
             <br />
             <br />
             {/*-------------------------------------------------- Nombre: --------------------------------------------*/}
             <div>
                 <label className = 'properties' >Nombre</label>
-                <input type = "text" value = {form.name} onChange = {changeHandler} name = 'name' className = 'entrada-texto'></input> 
+                <input type = "text" value = {form.name} onChange = {changeHandler} name = 'name' className = 'entrada-texto' placeholder = 'bulbasaur'></input> 
             </div>
             {/*-------------------------------------------------- Imágen: --------------------------------------------*/}
             <div>
@@ -167,22 +174,34 @@ const Form = () =>
                     {errors.sprites && <span className = 'error-message'>{errors.sprites}</span>} 
                 </div> 
             </div>
+            <br />
             {/*-------------------------------------------------- Stats: --------------------------------------------*/}
+            <div className = 'box-stats'>
+                <label className = 'title-stats'>
+                    Estadísticas 
+                    {
+                        errors.hp || errors.attack || errors.defense || errors.speed || errors.height || errors.weight ? 
+                            <span >⚠️</span> 
+                        : null
+                    }
+                </label>
+            </div>
+
             <div className = 'stats-container'>
                 
                 <div className = 'stat'>
                     <label className = 'properties' >Vida</label>
-                    <input type = "number" min = "0" step = "100" max = "999" value = {form.hp} onChange = {changeHandler} name = 'hp'  placeholder = "0 - 999" className = 'entrada-stats'></input> 
+                    <input type = "number" min = "0" step = "1" max = "999" value = {form.hp} onChange = {changeHandler} name = 'hp'  placeholder = "0 - 999" className = 'entrada-stats'></input> 
                 </div>
 
                 <div className = 'stat'>
                     <label className = 'properties' >Ataque</label>
-                    <input type = "number" min = "0" step = "100" max = "999" value = {form.attack} onChange = {changeHandler} name = 'attack' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
+                    <input type = "number" min = "0" step = "1" max = "999" value = {form.attack} onChange = {changeHandler} name = 'attack' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
                 </div>
 
                 <div className = 'stat'>
                     <label className = 'properties' >Defensa</label>
-                    <input type = "number" min = "0" step = "100" max = "999" value = {form.defense} onChange = {changeHandler} name = 'defense' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
+                    <input type = "number" min = "0" step = "1" max = "999" value = {form.defense} onChange = {changeHandler} name = 'defense' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
                 </div>
                                 
             </div>
@@ -191,24 +210,24 @@ const Form = () =>
 
                 <div className = 'stat'>
                     <label className = 'properties' >Velocidad</label>
-                    <input type = "number" min = "0" step = "100" max = "999" value = {form.speed} onChange = {changeHandler} name = 'speed' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
+                    <input type = "number" min = "0" step = "1" max = "999" value = {form.speed} onChange = {changeHandler} name = 'speed' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
                 </div>
 
                 <div className = 'stat'>
                     <label className = 'properties' >Altura</label>
-                    <input type = "number" min = "0" step = "100" max = "999" value = {form.height} onChange = {changeHandler} name = 'height' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
+                    <input type = "number" min = "0" step = "1" max = "999" value = {form.height} onChange = {changeHandler} name = 'height' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
                 </div>
 
                 <div className = 'stat'>
                     <label className = 'properties' >Peso</label>
-                    <input type = "number" min = "0" step = "100" max = "999" value = {form.weight} onChange = {changeHandler} name = 'weight' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
+                    <input type = "number" min = "0" step = "1" max = "999" value = {form.weight} onChange = {changeHandler} name = 'weight' placeholder = "0 - 999" className = 'entrada-stats' ></input> 
                 </div>
 
             </div>
 
             {/*-------------------------------------------------- Tipos: --------------------------------------------*/}      
             <div>
-                <label className = 'properties' >Tipos</label>
+                <label className = 'properties' >Tipos <label className = 'min-types'>(min. 2)</label></label>
                 <div className = 'types-container'>
                     {
                         typesOptions.map((type)=>(

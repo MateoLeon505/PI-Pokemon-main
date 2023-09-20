@@ -19,6 +19,7 @@ const Card = (props) =>
                 <p><strong>Speed: </strong>{props.speed}</p>
                 <p><strong>Height:  </strong>{props.height}</p>
                 <p><strong>Weight:  </strong>{props.weight}</p>
+                <p><strong>Types:  </strong>{props.types}</p>
             </div>
         </div>
     );

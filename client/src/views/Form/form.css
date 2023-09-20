@@ -42,7 +42,7 @@ body
 /* Formulario */
 .form-container 
 {
-    height: 720px;
+    height: 742px;
     width: 400px;
     margin: 0 auto;
     margin-top: 40px;
@@ -56,6 +56,24 @@ body
 }
 /*----------------------------------------------------
 /* Etiquetas */
+.box-stats
+{
+    position: relative; /* Contenedor de texto de posicionamiento */
+    display: flex; /* Usar flexbox */
+    flex-direction: row; /* Organizar los mensajes de error en fila horizontal */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+    left: 50%; /* Centra horizontalmente en relación con el contenedor principal */
+    transform: translateX(-50%); /* Centra horizontalmente el propio elemento */
+}
+.title-stats
+{
+    font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+    color:#C73323;
+    font-weight: bold;
+}
 .properties
 {
     font-size: 17px;
@@ -144,6 +162,11 @@ body
 
 
 /*----------------------------------------------------*/
+.min-types
+{
+    font-size: 12px;
+    color:#C73323;
+}
 /* Estilo para los contenedores de tipos */
 .types-container 
 {

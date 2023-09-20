@@ -1,5 +1,19 @@
 /* Estilo para el botón en la Landing Page */
 /*----------------------------------------------*/
+.fondo 
+{
+    background-color: white;
+    background-size: cover; /* Ajusta la imagen para cubrir toda la página */
+    background-position: center; /* Centra la imagen horizontal y verticalmente */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    height: 100vh; /* Ocupa toda la altura de la ventana gráfica */
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Apila elementos verticalmente */
+    justify-content: center; /* Centra verticalmente los elementos */
+    align-items: center; /* Centra horizontalmente los elementos */
+}
 /* Estilo para las imágenes */
 .landing-images {
     display: flex;

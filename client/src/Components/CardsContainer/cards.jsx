@@ -10,8 +10,22 @@ import Card from '../pokemonCard/card.jsx'; // Trae Card
 // Define el componente
 const Cards = () =>
 {
-    // Trae Pokemons|
-	const pokemons = useSelector(state=>state.pokemons);
+    // Trae Pokemons
+	const pokemons = useSelector(state => state.pokemons);
+    //-----------------
+    // Separa Types
+    const getTypes = (pokemon) =>
+    {
+        if (pokemon.types.length === 0) 
+        {
+            return "No";    
+        }
+        else
+        {
+            return pokemon.types.map((type) => type).join(', ');
+        }
+    }
+    //-----------------
     // Muestra pokemons
     return (
         <div  className = "cardGrid">
@@ -27,7 +41,9 @@ const Cards = () =>
                     defense = {pokemon.defense}
                     speed = {pokemon.speed}
                     height = {pokemon.height}
-                    weight = {pokemon.weight}/>
+                    weight = {pokemon.weight}
+                    types = {getTypes(pokemon)}
+                    />
                 );
             })}
         </div>

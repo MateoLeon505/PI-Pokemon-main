@@ -1,53 +1,42 @@
 /* Barra de navegación */
 /*----------------------------------------------------*/
 /* Se trae la fuente de texto */
-.image
+@font-face 
 {
-    height: 30px;
-    width: 30px;
+    font-family: 'logoFont2'; /* Nombre de la fuente */
+    src: url('../../font-pokemon/Bouncy-Thin-PERSONAL_USE_ONLY.otf') format('truetype'); /* Ruta a tu archivo de fuente */
+    font-weight: normal;
+    font-style: normal;
 }
+
 .blanco
 {
-    font-family: fantasy;
+    font-family: 'logoFont2';
     font-size: 30px;
-    color: white;
+    color: #ffffff;
     letter-spacing: 1px; /* Espaciado entre letras */
-    margin-right: -2px; /* Ajusta el margen derecho (puedes cambiar este valor según tus necesidades) */
-    margin-left: -2px;
-    position: relative; /* Para aplicar sombra de texto */
-    text-shadow: /*Sombra*/
-    -2px -2px 0 black, /*Sombra esquina Sup Izq*/
-    2px -2px 0 black, /*Sombra esquina Sup Der*/
-    -2px 2px 0 black, /*Sombra esquina inf izq*//*Desenfoque 0 = Nítidez*/
-    2px 2px 0 black, /*Sombra esquina inf der*/
-    0px 0px 5px rgba(0,0,0,0.5); /* Sombras internas para evitar superposición */
+    margin-right: -10px; /* Ajusta el margen derecho (puedes cambiar este valor según tus necesidades) */
 }
+
 .rojo
 {
-    font-family: fantasy;
-    font-size: 31px;
-    color: #CE1126;
+    font-family: 'logoFont2';
+    font-size: 30px;
+    color: #c73323;
     letter-spacing: 1px; /* Espaciado entre letras */
-    position: relative; /* Para aplicar sombra de texto */
-    text-shadow: /*Sombra*/
-    -2px -2px 0 black, /*Sombra esquina Sup Izq*/
-    2px -2px 0 black, /*Sombra esquina Sup Der*/
-    -2px 2px 0 black, /*Sombra esquina inf izq*//*Desenfoque 0 = Nítidez*/
-    2px 2px 0 black, /*Sombra esquina inf der*/
-    0px 0px 5px rgba(0,0,0,0.5); /* Sombras internas para evitar superposición */
 }
 /*Barra*/
 .mainContainer
 {
-    font-family: cursive;
-    font-size: 20px;
-    display: flex;
-    background-color: black;
-    color: #FFFFFF;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid black;
+    height: 60px;
+    font-size: 25px; /* Tamaño Fuente */
+    display: flex; /* Flexbox */
+    background-color: #000000; /* Fondo */
+    color: #FFFFFF; /* Color */
+    justify-content: space-between; /* Distribuir contenido */
+    flex-direction: row; /* Organizar los mensajes de error en fila horizontal */
+    align-items: center; /* Centrar los elementos verticalmente */
+    border: 1px solid #000000;
     padding-left: 20px;
     position: sticky;
     top: 0;
@@ -61,8 +50,22 @@
 }
 
 /* Estilo para los enlaces cuando se pasan sobre ellos */
-.mainContainer a:hover {
+.mainContainer a:hover 
+{
     color: #CE1126; /* Texto rojo en hover */
 }
+
+.image
+{
+    height: 50px;
+    width: 50px;
+}
+
+.image:hover
+{animation:rotate-center 0.7s} @keyframes rotate-center{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+
+
+
 
 

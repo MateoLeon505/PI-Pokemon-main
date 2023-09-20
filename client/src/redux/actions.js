@@ -14,6 +14,15 @@ const getPokemons = () =>
     };
 };
 //-----------------
+const getPokemonByName = (name) =>
+{
+    return async function (dispatch)
+    {
+        const response = await axios.get(`http://localhost:3001/pokemons/${name}`);
+        dispatch({ type: GET_POKEMON_NAME, payload: response.data });
+    }
+}
+//-----------------
 const getPokemonById = (id) =>
 {
     return async function (dispatch)
@@ -31,7 +40,6 @@ const getPokemonTypes = () =>
         dispatch({ type: GET_POKEMON_TYPES, payload: response.data });
     };
 };
-
 //----------------------------------------------
 // Exportación actions
-export { getPokemons, getPokemonById, getPokemonTypes };
+export { getPokemons, getPokemonById, getPokemonTypes, getPokemonByName };
