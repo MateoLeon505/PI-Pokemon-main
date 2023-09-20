@@ -1,21 +1,31 @@
-// Componente para manejar la paginación
-import React from 'react';
+// Componente para manejar los botones de paginación
+import React, { useState } from 'react';
+import './Pagination.css';
 //----------------------------------------------
-const Pagination = ({ pagination, allPokemons, pokemonsOnPage, page }) =>
+const Pagination = ({ pagination, totalOfPages }) =>
 {
-    const totalOfPages = Math.ceil(allPokemons.length / pokemonsOnPage);
-    const pages = [];
+    const pages = [];;
     //---------------
-    for (let i = 0; i < totalOfPages; i++) 
-    {
-        pages.push(i);
-    }
-    
+    for (let i = 1; i <= totalOfPages; i++) { pages.push(i) }
+    //---------------
     return (
-        <div>
-            {pages}
+        <div className = 'pagination'>
+                {
+                    pages.map((num) =>(
+                            <button
+                            key = {num}
+                            className = 'botones'
+                            onClick = {() => pagination(num)}>
+                                {num}
+                            </button>
+                    ))
+                }
+                <br />
+                <br />
         </div>
     );
 }
 //----------------------------------------------
+// Exporta el componente
 export default Pagination;
+//className = {`pagination-button ${page === num ? "active" : ""}`}

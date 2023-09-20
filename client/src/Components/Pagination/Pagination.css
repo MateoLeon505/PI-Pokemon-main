@@ -1,0 +1,30 @@
+.pagination
+{
+
+}
+
+.botones
+{
+    background-color: #263259;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 40px; /* Establece un ancho fijo para todos los botones */
+    text-align: center; /* Centra el contenido del botón horizontalmente */
+}
+.botones:hover 
+{
+    background-color: #E6BB0F;
+    color: #263259;
+}
+.prev-next-button {
+    background-color: #E6BB0F;
+}
+
+.hidden {
+    display: none;
+}

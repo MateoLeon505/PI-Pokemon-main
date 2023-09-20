@@ -1,11 +1,12 @@
 .cardContainer {
     background-color: #FFFFFF; /* Fondo blanco */
-    border: 2px solid #CE1126; /* Borde rojo */
+    border: 2px solid #C73323; /* Borde rojo */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
     margin: 20px; /* Margen exterior de la tarjeta */
     max-width: 300px; /* Ancho máximo de la tarjeta */
     text-align: center; /* Alineación de contenido centrada */
+    cursor: pointer;
     transition: transform 0.2s ease; /* Transición suave en hover */
 }
 
@@ -17,7 +18,7 @@
     font-size: 24px; /* Tamaño de fuente del nombre */
     text-transform: uppercase; /* Texto mayúscula*/
     font-weight: bold; /* Texto en negrita */
-    color: #CE1126; /* Color rojo para el nombre */
+    color: #C73323; /* Color rojo para el nombre */
     margin: 15px 0; /* Espacio arriba y abajo del nombre */
 }
 
@@ -29,7 +30,7 @@
 
 .cardStats {
     font-size: 16px; /* Tamaño de fuente para estadísticas */
-    color: #0098D8; /* Color azul para estadísticas */
+    color: #263259; /* Color azul para estadísticas */
     padding: 10px 0; /* Espaciado interior de las estadísticas */
 }
 
@@ -39,3 +40,17 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas automáticas */
     gap: 20px; /* Espacio entre las tarjetas */
 }
+
+.movable-image
+{
+    position:fixed; /* Importante para posicionarla */
+    animation: moveRight 4s linear infinite; /* Aplica la animación */
+}
+@keyframes moveRight {
+    0% {
+      left: 0; /* Posición inicial (izquierda) */
+    }
+    100% {
+      left: calc(100% - 100px); /* Posición final (derecha) */
+    }
+  }

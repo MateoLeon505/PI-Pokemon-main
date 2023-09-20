@@ -4,6 +4,7 @@
 import { useState } from 'react'; // Estado del componente
 import { getPokemons, getPokemonByName } from '../../redux/actions'; // Para despachar acciones a Redux
 import { useDispatch } from "react-redux"; // Dispatch de Redux
+import './searchBar.css';
 //----------------------------------------------
 const SearchBar = () =>
 {
@@ -35,15 +36,16 @@ const SearchBar = () =>
     //----------------
     // Renderiza
     return(
-        <div>
+        <div className = 'searchBar'>
             <form onSubmit = {submitHandler}>
                 <input 
                     type = "search"
                     onChange = {changeHanlder}
                     value = {name}
-                    placeholder = 'Nombre Pokemon' 
+                    placeholder = 'Nombre Pokemon'
+                    className = "search-input" 
                 />
-                <button type = 'submit'>
+                <button type = 'submit' className = "search-button">
                     Buscar
                 </button>
             </form>
