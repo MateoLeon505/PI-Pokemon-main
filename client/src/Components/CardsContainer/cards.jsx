@@ -6,15 +6,11 @@ import React from 'react'; // Importa React
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Card from '../pokemonCard/card.jsx'; // Trae Card
-import giphy from '../../images/giphy.gif';
 import pikachuGif from '../../images/gifPikachu.gif';
 //----------------------------------------------
 // Define el componente
 const Cards = ({ collectionPokemons }) =>
 {
-    // Trae Pokemons
-	const pokemons = useSelector(state => state.pokemons);
-    //-----------------
     // Separa Types
     const getTypes = (pokemon) =>
     {

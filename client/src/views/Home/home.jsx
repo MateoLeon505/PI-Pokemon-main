@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'; // Obtener el dispatch d
 import Cards from "../../Components/CardsContainer/cards"; // Trae componente de Cartas
 import { getPokemons, getPokemonTypes } from '../../redux/actions'; // Acciones para obtener pokemons y types
 import  Pagination  from '../../Components/Pagination/Pagination';
+import notfound from '../../images/notfound.gif'
 //----------------------------------------------
 const Home = () =>
 {
@@ -20,6 +21,29 @@ const Home = () =>
     );
     const totalOfPages = Math.ceil(allPokemons.length / pokemonsOnPage); // Total páginas
     //-----------------------------
+    // Resultados de búsqueda
+    const searchResults = useSelector((state) => state.searchResults);
+    const [ homeView, setHomeView ] = useState(false); // Para un renderizado condicional
+    console.log("searchResults:", searchResults);
+    // Validación
+    const isSearchResultEmpty = () =>
+    {
+        if (Array.isArray(searchResults))
+        {
+            return searchResults.length > 0;
+        }
+        else if (typeof searchResults === 'object')
+        {
+            return Object.keys(searchResults).length > 0;
+        }
+        return false;
+    }
+    // Comprueba si searchResults está vacío
+    useEffect(() =>
+    {
+        setHomeView(isSearchResultEmpty());
+    }, [searchResults]);
+    //----------------------------- 
     // Se encarga de cambiar la página actual
     const changePage = (newPage) =>
     {
@@ -39,10 +63,22 @@ const Home = () =>
         <br />
         <br />
         <br />
-        <Cards collectionPokemons = {collectionPokemons}/>
-        <Pagination
-            totalOfPages = {totalOfPages}
-            pagination = {changePage}/>
+        {
+            !homeView
+            ?
+                <>
+                    <Cards collectionPokemons = {collectionPokemons}/>
+                    <Pagination
+                    totalOfPages = {totalOfPages}
+                    pagination = {changePage}/> 
+                    <img src = {notfound} alt = "PokemonNotFound" />
+                    <span>Pokemon No Encontrado</span>
+                </>
+            :
+            <>
+            <span>Error ni el hp</span>
+            </>
+        }
     </div>
     );
 }

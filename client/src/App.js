@@ -9,6 +9,7 @@ function App()
 {
   const location = useLocation(); // Ubicacíon
 
+
   return (
     <div className="App">
       { location.pathname !== '/' && <NavBar/> }

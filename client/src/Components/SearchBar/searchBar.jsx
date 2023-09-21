@@ -5,6 +5,7 @@ import { useState } from 'react'; // Estado del componente
 import { getPokemons, getPokemonByName } from '../../redux/actions'; // Para despachar acciones a Redux
 import { useDispatch } from "react-redux"; // Dispatch de Redux
 import './searchBar.css';
+import lupa from '../../images/lupa.png';
 //----------------------------------------------
 const SearchBar = () =>
 {
@@ -14,24 +15,24 @@ const SearchBar = () =>
     // Cuando se cambia el valor del campo de búsqueda
     const changeHanlder = (event) =>
     {
-        if (event.target.value === "") // Si no hay 'name' para buscar
-        {
-            dispatch(getPokemons); // Despacha la action para traer a TODOS los pokemon
-        }
         setName(event.target.value); // Setea 'name' con el valor recibido
-    };
-    //----------------
-    // Cuando se hace la búsqueda
-    const searchHandler = () =>
-    {
-        dispatch(getPokemonByName(name)); // Despacha la action que trae al pokemon por 'name'
     };
     //----------------
     // Función para cuando se envía el formulario
     const submitHandler = (event) =>
     {
-        event.preventDeafault(); // No se reinicie la página
-        searchHandler(); // LLama a la función que busca al pokemon
+        event.preventDefault(); // No se reinicie la página
+        //-------------------
+        if (name.trim === '') 
+        {
+            dispatch(getPokemons);
+        }
+        else
+        {
+            console.log(getPokemonByName(name));
+            dispatch(getPokemonByName(name)); // Despacha la action que trae al pokemon por 'name'
+            
+        }
     };
     //----------------
     // Renderiza
@@ -46,7 +47,7 @@ const SearchBar = () =>
                     className = "search-input" 
                 />
                 <button type = 'submit' className = "search-button">
-                    Buscar
+                    <img src = {lupa} alt="" className = "search"/>
                 </button>
             </form>
         </div>

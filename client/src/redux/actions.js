@@ -18,7 +18,7 @@ const getPokemonByName = (name) =>
 {
     return async function (dispatch)
     {
-        const response = await axios.get(`http://localhost:3001/pokemons/${name}`);
+        const response = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
         dispatch({ type: GET_POKEMON_NAME, payload: response.data });
     }
 }

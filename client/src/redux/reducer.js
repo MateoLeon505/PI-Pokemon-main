@@ -7,6 +7,7 @@ import { GET_POKEMONS, GET_POKEMON_DETAIL, GET_POKEMON_NAME, GET_POKEMON_TYPES }
 const initialState = // Estado Global
 {
     pokemons: [],
+    searchResults: [],
     detail: [],
     types: []
 };
@@ -24,8 +25,8 @@ const reducer = (state = initialState, action) =>
         
         case GET_POKEMON_NAME:
             return { 
-                 ...state, // Copia del estado y modifica la propiedad payload
-                detail: action.payload 
+                ...state, // Copia del estado y modifica la propiedad payload
+                searchResults: action.payload 
             };
 
         case GET_POKEMON_DETAIL:
