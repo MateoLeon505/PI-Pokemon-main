@@ -1,6 +1,6 @@
 /* Barra de navegación */
 /*----------------------------------------------------*/
-/* Se trae la fuente de texto */
+/* Se traen las fuentes de texto */
 @font-face 
 {
     font-family: 'logoFont2'; /* Nombre de la fuente */
@@ -9,6 +9,22 @@
     font-style: normal;
 }
 
+@font-face 
+{
+    font-family: 'brezzi'; /* Nombre de la fuente */
+    src: url('../../font-pokemon/breezi\ icons.ttf') format('truetype'); /* Ruta a tu archivo de fuente */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face 
+{
+    font-family: 'byom'; /* Nombre de la fuente */
+    src: url('../../font-pokemon/Byom-Icons-Trial.ttf') format('truetype'); /* Ruta a tu archivo de fuente */
+    font-weight: normal;
+    font-style: normal;
+}
+/*----------------------------------------------------*/
 .blanco
 {
     font-family: 'logoFont2';
@@ -17,7 +33,7 @@
     letter-spacing: 1px; /* Espaciado entre letras */
     margin-right: -10px; /* Ajusta el margen derecho (puedes cambiar este valor según tus necesidades) */
 }
-
+/*----------------------------------------------------*/
 .rojo
 {
     font-family: 'logoFont2';
@@ -25,7 +41,8 @@
     color: #c73323;
     letter-spacing: 1px; /* Espaciado entre letras */
 }
-/*Barra*/
+/*----------------------------------------------------*/
+/*Barra container*/
 .mainContainer
 {
     height: 60px;
@@ -42,28 +59,42 @@
     top: 0;
     z-index: 100; /* Asegúrate de que esté encima de otros elementos */
 }
-
+.icons
+{
+    font-family: 'brezzi';
+    font-size: 40px;
+}
+.icons2
+{
+    font-family: 'byom';
+    font-size: 40px;
+}
+/*----------------------------------------------------*/
 .mainContainer a {
     color: #FFFFFF; /* Texto blanco */
     text-decoration: none; /* Quita subrayado de enlaces */
     padding: 10px 15px; /* Espaciado interior de los enlaces */
 }
-
+/*----------------------------------------------------*/
 /* Estilo para los enlaces cuando se pasan sobre ellos */
-.mainContainer a:hover 
-{
-    color: #CE1126; /* Texto rojo en hover */
-}
+.mainContainer a:hover {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(250, 249, 249, 0.2);
+    border-radius: 300%;
+  }
+  
 
+/*----------------------------------------------------*/
 .image
 {
     height: 50px;
     width: 50px;
 }
-
+/*----------------------------------------------------*/
 .image:hover
 {animation:rotate-center 0.7s} @keyframes rotate-center{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-
+/*----------------------------------------------------*/
 
 
 

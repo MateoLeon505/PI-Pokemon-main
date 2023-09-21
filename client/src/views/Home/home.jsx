@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'; // Obtener el dispatch d
 import Cards from "../../Components/CardsContainer/cards"; // Trae componente de Cartas
 import { getPokemons, getPokemonTypes } from '../../redux/actions'; // Acciones para obtener pokemons y types
 import  Pagination  from '../../Components/Pagination/Pagination';
-import notfound from '../../images/notfound.gif'
+import notfound from '../../images/notfound.gif' // Imagen Loading
 //----------------------------------------------
 const Home = () =>
 {
@@ -14,6 +14,9 @@ const Home = () =>
     const allPokemons = useSelector((state) => state.pokemons); // Lista de TODOS los pokemon
     const [ page, setPage ] = useState(1); // Número de página actual
     const pokemonsOnPage = 12; // Núm de pokemons por página
+    //--------------
+    const [ isLoading, setIsLoading ] = useState(true); // Estado de carga
+    //--------------
     // Pokemons por página
     const collectionPokemons = allPokemons.slice(
         (page - 1) * pokemonsOnPage,
@@ -23,27 +26,7 @@ const Home = () =>
     //-----------------------------
     // Resultados de búsqueda
     const searchResults = useSelector((state) => state.searchResults);
-    const [ homeView, setHomeView ] = useState(false); // Para un renderizado condicional
-    console.log("searchResults:", searchResults);
-    // Validación
-    const isSearchResultEmpty = () =>
-    {
-        if (Array.isArray(searchResults))
-        {
-            return searchResults.length > 0;
-        }
-        else if (typeof searchResults === 'object')
-        {
-            return Object.keys(searchResults).length > 0;
-        }
-        return false;
-    }
-    // Comprueba si searchResults está vacío
-    useEffect(() =>
-    {
-        setHomeView(isSearchResultEmpty());
-    }, [searchResults]);
-    //----------------------------- 
+
     // Se encarga de cambiar la página actual
     const changePage = (newPage) =>
     {
@@ -51,11 +34,19 @@ const Home = () =>
     };
     //-----------------------------
     // Efecto secundario que despacha las acciones 'getPokemons' y 'getPokemonTypes'
-    useEffect(()=>
+    useEffect(() => 
     {
-        dispatch(getPokemons());
-        dispatch(getPokemonTypes());
-    },[dispatch]);
+        // Muestra la imagen de carga al iniciar la solicitud
+        setIsLoading(true);
+
+        // Realiza las solicitudes
+        dispatch(getPokemons())
+            .then(() => dispatch(getPokemonTypes()))
+            .finally(() => {
+                // Oculta la imagen de carga una vez que los datos se han cargado
+                setIsLoading(false);
+            });
+    }, [dispatch]);
     //----------------------------- 
     // Renderiza 
     return(
@@ -64,21 +55,25 @@ const Home = () =>
         <br />
         <br />
         {
-            !homeView
-            ?
-                <>
-                    <Cards collectionPokemons = {collectionPokemons}/>
-                    <Pagination
-                    totalOfPages = {totalOfPages}
-                    pagination = {changePage}/> 
-                    <img src = {notfound} alt = "PokemonNotFound" />
-                    <span>Pokemon No Encontrado</span>
-                </>
-            :
-            <>
-            <span>Error ni el hp</span>
-            </>
+            isLoading 
+            ?   <img src = {notfound} alt = "Loading..." />
+            : 
+                (
+                    !searchResults || (Array.isArray(searchResults) && searchResults.length === 0)
+                    ?
+                        <>
+                            <Cards collectionPokemons = {collectionPokemons}/>
+                            <Pagination
+                            totalOfPages = {totalOfPages}
+                            pagination = {changePage}/> 
+                        </>
+                    :
+                        <>
+                            <Cards collectionPokemons = {searchResults}/>
+                        </>
+                )
         }
+        {console.log("searchResultsAC:", searchResults)}
     </div>
     );
 }

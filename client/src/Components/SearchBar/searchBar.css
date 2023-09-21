@@ -1,8 +1,10 @@
+/* Contenedor Formulario */
 .search-bar 
 {
     text-align: center;
     margin: 20px; /* Espacio alrededor de la barra de búsqueda */
 }
+/* --------------------------------------------------------------- */
 /* Estilos para el campo de búsqueda */
 .search-input 
 {
@@ -14,27 +16,35 @@
     font-size: 16px;
     float: left; /* Alinea el campo de búsqueda a la izquierda */
 }
-
+/* --------------------------------------------------------------- */
+/* Tipografia icons*/
+@font-face 
+{
+    font-family: 'icons'; /* Nombre de la fuente */
+    src: url('../../font-pokemon/Byom-Icons-Trial.ttf') format('truetype'); /* Ruta a tu archivo de fuente */
+    font-weight: normal;
+    font-style: normal;
+}
+/* --------------------------------------------------------------- */
   /* Estilos para el botón de búsqueda */
-.search-button 
-{
-    padding: 10px 20px;
-    background-color: #263259;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    height: 40px;
-    display:flex;
-    align-items: center; /* Centra verticalmente el contenido del botón */
-    float: left; /* Alinea el botón a la izquierda */
-}
-.search-button:hover {
-    background-color: #E6BB0F;
-    color: #263259;
-}
-.search
-{
-    height: 25px;
-    width: 25px;
-}
+  .search-button 
+  {
+      font-family: 'icons'; /* Nombre fuente */
+      font-size: 25px; /* Tamaño fuente */
+      text-align: center; /* Centrar el texto horizontalmente */
+      padding: 10px 20px;
+      background-color: #263259;
+      color: #FFFFFF; /* Color fuente */
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      height: 40px;
+      display:flex;
+      align-items: center; /* Centra verticalmente el contenido del botón */
+      float: left; /* Alinea el botón a la izquierda */
+  }
+  .search-button:hover 
+  {
+      background-color: #E6BB0F;
+      color: #263259;
+  }

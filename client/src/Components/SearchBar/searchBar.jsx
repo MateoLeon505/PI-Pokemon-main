@@ -3,12 +3,14 @@
 // Importación módulos
 import { useState } from 'react'; // Estado del componente
 import { getPokemons, getPokemonByName } from '../../redux/actions'; // Para despachar acciones a Redux
-import { useDispatch } from "react-redux"; // Dispatch de Redux
+import { useDispatch, useSelector } from "react-redux"; // Dispatch de Redux
 import './searchBar.css';
-import lupa from '../../images/lupa.png';
+import { CLEAR_SEARCH_RESULTS } from '../../redux/action-types';
 //----------------------------------------------
 const SearchBar = () =>
 {
+    const pokemonsState = useSelector((state) => state.pokemons);
+
     const dispatch = useDispatch(); //  Dispatch de Redux
     const [ name, setName ] = useState(''); // Estado para name
     //----------------
@@ -23,13 +25,13 @@ const SearchBar = () =>
     {
         event.preventDefault(); // No se reinicie la página
         //-------------------
-        if (name.trim === '') 
+        if (name.trim() === '') 
         {
+            dispatch({ type: CLEAR_SEARCH_RESULTS });
             dispatch(getPokemons);
         }
         else
         {
-            console.log(getPokemonByName(name));
             dispatch(getPokemonByName(name)); // Despacha la action que trae al pokemon por 'name'
             
         }
@@ -43,14 +45,14 @@ const SearchBar = () =>
                     type = "search"
                     onChange = {changeHanlder}
                     value = {name}
-                    placeholder = 'Nombre Pokemon'
+                    placeholder = 'pokemon'
                     className = "search-input" 
                 />
-                <button type = 'submit' className = "search-button">
-                    <img src = {lupa} alt="" className = "search"/>
-                </button>
+                <button type = 'submit' className = "search-button">S</button>
             </form>
+            {console.log('estado TODOS los pokemon',pokemonsState)}
         </div>
+        
     );
 }
 //-----------------------------------------------

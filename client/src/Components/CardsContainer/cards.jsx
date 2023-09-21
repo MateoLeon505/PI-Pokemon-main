@@ -27,27 +27,44 @@ const Cards = ({ collectionPokemons }) =>
     // Retorna pokemons
     return (
         <>
-            {collectionPokemons.length > 0 ?
-                <div  className = "cardGrid">
-                    {collectionPokemons.map(pokemon =>
+            {
+                Array.isArray(collectionPokemons)
+                ?
+                    <div  className = "cardGrid">
                         {
-                            console.log(collectionPokemons);
-                            return (
-                                <Card
-                                id = {pokemon.id}
-                                name = {pokemon.name}
-                                sprites = {pokemon.sprites}
-                                hp = {pokemon.hp}
-                                attack = {pokemon.attack}
-                                defense = {pokemon.defense}
-                                speed = {pokemon.speed}
-                                height = {pokemon.height}
-                                weight = {pokemon.weight}
-                                types = {getTypes(pokemon)}
-                            /> );
-                        })}
-                </div>
-                : <img src = {pikachuGif} alt="Loading" className = 'movable-image'/>
+                            collectionPokemons.map(pokemon =>
+                                {
+                                    console.log(collectionPokemons);
+                                    return (
+                                        <Card
+                                        id = {pokemon.id}
+                                        name = {pokemon.name}
+                                        sprites = {pokemon.sprites}
+                                        hp = {pokemon.hp}
+                                        attack = {pokemon.attack}
+                                        defense = {pokemon.defense}
+                                        speed = {pokemon.speed}
+                                        height = {pokemon.height}
+                                        weight = {pokemon.weight}
+                                        types = {getTypes(pokemon)}/> 
+                                    );
+                                })
+                        }
+                    </div>
+                :
+                    <div  className = "cardGrid">
+                        <Card
+                        id = {collectionPokemons.id}
+                        name = {collectionPokemons.name}
+                        sprites = {collectionPokemons.sprites}
+                        hp = {collectionPokemons.hp}
+                        attack = {collectionPokemons.attack}
+                        defense = {collectionPokemons.defense}
+                        speed = {collectionPokemons.speed}
+                        height = {collectionPokemons.height}
+                        weight = {collectionPokemons.weight}
+                        types = {getTypes(collectionPokemons)}/> 
+            </div>
             }
         </>
     );
@@ -55,3 +72,4 @@ const Cards = ({ collectionPokemons }) =>
 //----------------------------------------------
 // Exporta el componente
 export default Cards;
+{/* <img src = {pikachuGif} alt="Loading" className = 'movable-image'/> */}
