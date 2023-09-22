@@ -12,14 +12,7 @@ const Card = (props) =>
             <p className = 'cardName'> {props.name}</p>
             <img src = {props.sprites} alt = {props.name} className = "cardImage" />
             <div className = "cardStats">
-                <p> <strong>Id: </strong>{props.id}</p>
-                <p><strong>HP: </strong>{props.hp}</p>
-                <p><strong>Attack: </strong>{props.attack}</p>
-                <p><strong>Defense: </strong>{props.defense}</p>
-                <p><strong>Speed: </strong>{props.speed}</p>
-                <p><strong>Height:  </strong>{props.height}</p>
-                <p><strong>Weight:  </strong>{props.weight}</p>
-                <p><strong>Types:  </strong>{props.types}</p>
+
             </div>
         </div>
     );

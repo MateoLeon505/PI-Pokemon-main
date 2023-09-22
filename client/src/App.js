@@ -17,7 +17,7 @@ function App()
         <Route exact path = '/' component = {Landing}/>
         <Route exact path = '/create' component = {Form}/>
         <Route exact path = '/home' component = {Home}/>
-        <Route exact path = '/detail' component = {Detail}/>
+        <Route exact path = '/detail/:id' component = {Detail}/>
       </Switch>
     </div>
   );

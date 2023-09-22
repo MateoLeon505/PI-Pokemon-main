@@ -40,6 +40,9 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas automáticas */
     gap: 20px; /* Espacio entre las tarjetas */
 }
+.cardGrid a{
+    text-decoration: none; /* Quita subrayado de enlaces */
+}
 
 .movable-image
 {

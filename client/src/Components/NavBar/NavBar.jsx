@@ -19,10 +19,10 @@ const NavBar = () =>
                 <span className = 'rojo'>   APP</span>
             </div>
             {location.pathname === '/home' && <SearchBar></SearchBar>}
-            <NavLink to = "/home" className = "icons"> h  </NavLink>
+            <NavLink to = "/home" className = "icons"> h </NavLink>
             <NavLink to = "/create" className = "icons" > d </NavLink>
             <NavLink to = "/create" className = "icons"> H </NavLink>
-            <NavLink to = "/create" className = "icons2"> I </NavLink>
+            <NavLink to = "/about" className = "icons2"> I </NavLink>
             <NavLink to = "/" > <img src = {Pokeball} alt = "PokeBall" className = 'image'/> </NavLink>
         </div>
     );

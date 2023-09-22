@@ -6,7 +6,6 @@ import React from 'react'; // Importa React
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Card from '../pokemonCard/card.jsx'; // Trae Card
-import pikachuGif from '../../images/gifPikachu.gif';
 //----------------------------------------------
 // Define el componente
 const Cards = ({ collectionPokemons }) =>
@@ -32,38 +31,41 @@ const Cards = ({ collectionPokemons }) =>
                 ?
                     <div  className = "cardGrid">
                         {
-                            collectionPokemons.map(pokemon =>
-                                {
-                                    console.log(collectionPokemons);
-                                    return (
-                                        <Card
-                                        id = {pokemon.id}
-                                        name = {pokemon.name}
-                                        sprites = {pokemon.sprites}
-                                        hp = {pokemon.hp}
-                                        attack = {pokemon.attack}
-                                        defense = {pokemon.defense}
-                                        speed = {pokemon.speed}
-                                        height = {pokemon.height}
-                                        weight = {pokemon.weight}
-                                        types = {getTypes(pokemon)}/> 
-                                    );
-                                })
+                            collectionPokemons.map(pokemon => (
+                                <div key = {pokemon.id}>
+                                <NavLink to = {`/detail/${pokemon.id}`}>
+                                  <Card
+                                    id = {pokemon.id}
+                                    name = {pokemon.name}
+                                    sprites = {pokemon.sprites}
+                                    hp = {pokemon.hp}
+                                    attack = {pokemon.attack}
+                                    defense = {pokemon.defense}
+                                    speed = {pokemon.speed}
+                                    height = {pokemon.height}
+                                    weight = {pokemon.weight}
+                                    types = {getTypes(pokemon)}
+                                  />
+                                </NavLink>
+                              </div>
+                            ))
                         }
                     </div>
                 :
-                    <div  className = "cardGrid">
-                        <Card
-                        id = {collectionPokemons.id}
-                        name = {collectionPokemons.name}
-                        sprites = {collectionPokemons.sprites}
-                        hp = {collectionPokemons.hp}
-                        attack = {collectionPokemons.attack}
-                        defense = {collectionPokemons.defense}
-                        speed = {collectionPokemons.speed}
-                        height = {collectionPokemons.height}
-                        weight = {collectionPokemons.weight}
-                        types = {getTypes(collectionPokemons)}/> 
+                    <div  className = "cardGrid" key = {collectionPokemons.id}>
+                        <NavLink to = {`/detail/${collectionPokemons.id}`}>
+                            <Card
+                             id = {collectionPokemons.id}
+                             name = {collectionPokemons.name}
+                             sprites = {collectionPokemons.sprites}
+                             hp = {collectionPokemons.hp}
+                             attack = {collectionPokemons.attack}
+                             defense = {collectionPokemons.defense}
+                             speed = {collectionPokemons.speed}
+                             height = {collectionPokemons.height}
+                             weight = {collectionPokemons.weight}
+                             types = {getTypes(collectionPokemons)}/>
+                        </NavLink> 
             </div>
             }
         </>

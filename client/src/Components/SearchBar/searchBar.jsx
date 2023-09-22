@@ -3,9 +3,9 @@
 // Importación módulos
 import { useState } from 'react'; // Estado del componente
 import { getPokemons, getPokemonByName } from '../../redux/actions'; // Para despachar acciones a Redux
+import { CLEAR_SEARCH_RESULTS } from '../../redux/action-types'; // Para limpiar action de busqueda
 import { useDispatch, useSelector } from "react-redux"; // Dispatch de Redux
 import './searchBar.css';
-import { CLEAR_SEARCH_RESULTS } from '../../redux/action-types';
 //----------------------------------------------
 const SearchBar = () =>
 {
